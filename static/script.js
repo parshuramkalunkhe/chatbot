@@ -24,5 +24,5 @@ sendBtn.addEventListener("click", async () => {
     document.querySelector(".message").style.display = "block";
     question.innerHTML = inputValue;
     let result = await postData("/api", {"input": inputValue});
-    solution.innerHTML = result.result
+    solution.innerHTML = result.answer
 });
