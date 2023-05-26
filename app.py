@@ -1,12 +1,9 @@
 from flask import Flask, render_template, jsonify, request
 from flask_pymongo import PyMongo
 
-
 import openai
 
-openai.api_key = "add your api key"
-
-
+openai.api_key = ""
 
 app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb://localhost:27017/chatbot" # add your mongo db connection string in my i am using local storage with chatbot database.
@@ -42,7 +39,7 @@ def qa():
             data = {"question": question, "answer": response["choices"][0]["text"]}
             mongo.db.chatdata.insert_one({"question": question, "answer": response["choices"][0]["text"]})
             return jsonify(data)
-    return ""
+    return jsonify(data)
 
 app.run(debug=True)
 
